@@ -1,0 +1,36 @@
+body {
+  background-color: #f5eded88;
+  margin: auto;
+}
+/* section menu */
+
+ul {
+  display: inline-flex;
+  margin: 10px;
+  padding-inline-start: initial;
+}
+
+li {
+  list-style-type: none;
+  color: rgba(10, 1, 1, 0.877);
+  margin: 10px;
+}
+
+.fas {
+  margin-right: 10px;
+  margin-left: 750px;
+}
+
+
+a {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: small;
+  color: rgba(8, 1, 1, 0.657);
+  text-decoration: none;
+}
+
+
+.container-fluid{
+    margin-top: 10px;
+}
