@@ -21,7 +21,6 @@ li {
   margin-left: 750px;
 }
 
-
 a {
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -30,7 +29,23 @@ a {
   text-decoration: none;
 }
 
+.container-fluid {
+  margin-top: 10px;
+}
 
-.container-fluid{
-    margin-top: 10px;
+#pageacceuil {
+  /* background-image: url("images/image4.jpg"); */
+  background-repeat: no-repeat;
+  margin: auto;
+  width: 80%;
+  
+
+  height: 100%;
+}
+
+#name{
+    text-transform: uppercase;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-image: url("images/image4.jpg ");
+    background-repeat: no-repeat;
 }
