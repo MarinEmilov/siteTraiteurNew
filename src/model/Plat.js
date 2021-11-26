@@ -22,6 +22,9 @@ const Plat = db.sequelize.define("plat", {
       type: db.Sequelize.BOOLEAN                     
     },
     
+    image: {
+      type: db.Sequelize.STRING.BINARY                     
+    },
   });
 
 

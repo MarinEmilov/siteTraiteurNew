@@ -18,7 +18,7 @@ li {
 
 .fas {
   margin-right: 10px;
-  margin-left: 750px;
+  margin-left: 850px;
 }
 
 a {
@@ -53,6 +53,16 @@ a {
   margin-top: 10px;
 }
 
+#admin{
+  border: black solid 2px;
+  float: right;
+  text-decoration: none;
+}
+
+.forme-input{
+  margin: 50px;
+ 
+}
 
 
 

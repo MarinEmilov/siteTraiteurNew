@@ -1,4 +1,5 @@
 
+const db = require('../model/db.js');
 const Plat = require('../model/Plat.js');
 
 
@@ -9,8 +10,7 @@ exports.getHomepage = async( req,res,next) => {
     res.render("index", {Plat:datas});
 }
 
-exports.getLoginPage = ( req, res , next) => {
-   
+exports.getLoginPage = ( req, res , next) => {   
     res.render("index", {});
 }
 
@@ -31,8 +31,8 @@ exports.getDejeunerPage = ( req, res , next) => {
     res.render("dejeuner", {});
 }
 
-exports.getIndividuellePage = ( req, res , next) => {
-    res.render("individuelle", {});
+exports.getAdminPage = ( req, res , next) => {
+    res.render("admin", {});
 }
 
 exports.getEmploiPage = ( req, res , next) => {
@@ -45,4 +45,15 @@ exports.getHistoirePage = ( req, res , next) => {
 
 exports.getLocationPage = ( req, res , next) => {
     res.render("location", {});
+}
+
+exports.postAdminPage = async ( req, res , next) => {
+    const {name, date} = req.files.pic;
+    if(name && data){
+        await db.sequelize({name: name, img: data}).into('img');
+        res.sendStatus(200);
+    }else {
+        res.sendStatus(400);
+    }
+    
 }
