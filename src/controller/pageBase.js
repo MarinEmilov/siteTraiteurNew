@@ -1,13 +1,16 @@
 
-var passport   = require('passport');
-const Parametre = require('../model/Parametre');
+const Plat = require('../model/Plat.js');
 
 
-exports.getHomepage = ( req,res,next) => {
-    res.render("index", {});
+
+
+exports.getHomepage = async( req,res,next) => {
+    let datas = await Plat.findAll();
+    res.render("index", {Plat:datas});
 }
 
 exports.getLoginPage = ( req, res , next) => {
+   
     res.render("index", {});
 }
 
@@ -20,6 +23,7 @@ exports.getSansGlutenPage = ( req, res , next) => {
 }
 
 exports.getFamilialePage = ( req, res , next) => {
+    
     res.render("familiale", {});
 }
 

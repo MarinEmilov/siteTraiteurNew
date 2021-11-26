@@ -38,14 +38,23 @@ a {
   background-repeat: no-repeat;
   margin: auto;
   width: 80%;
-  
 
   height: 100%;
 }
 
-#name{
-    text-transform: uppercase;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    background-image: url("images/image4.jpg ");
-    background-repeat: no-repeat;
+#name {
+  text-transform: uppercase;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  background-image: url("images/image4.jpg ");
+  background-repeat: no-repeat;
 }
+
+.photo{
+  margin-top: 10px;
+}
+
+
+
+
+
+

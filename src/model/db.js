@@ -1,7 +1,7 @@
 const { Sequelize, Model, DataTypes } = require("sequelize");
 let db = {};
 
-const sequelize = new Sequelize('tp2', 'root', '', {
+const sequelize = new Sequelize('traiteur', 'root', '', {
     host: 'localhost',
     dialect: 'mariadb'
 });

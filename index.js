@@ -3,6 +3,7 @@ let session = require("express-session");
 
 let route = require("./src/routes/pageBase.js");
 let db = require("./src/model/db.js");
+const Plat = require("./src/model/Plat.js");
 const app = express();
 const port = 3015;
 
@@ -24,6 +25,17 @@ app.use(
 );
 
 app.use(route);
+
+
+(async () => {
+  await db.sequelize.sync({ force: true });
+  Plat.create({namePlat:"Risoto", description :"notre risoto aux fruit de mer", prix: 15, optionVG: 1, cash:10.1});
+  Plat.create({namePlat:"Salade", description :"notre risoto aux fruit de mer", prix: 20, optionVG: 0, cash:10.1});
+  Plat.create({namePlat:"Tomates", description :"notre risoto aux fruit de mer", prix: 25, optionVG: 1, cash:10.1});
+  Plat.create({namePlat:"Saumon", description :"notre risoto aux fruit de mer", prix: 30, optionVG: 0, cash:10.1});
+})();
+
+
 
 // Server Start
 
