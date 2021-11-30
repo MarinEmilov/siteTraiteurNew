@@ -50,7 +50,7 @@ exports.getLocationPage = ( req, res , next) => {
 exports.postAdminPage = async ( req, res , next) => {
     const {name, date} = req.files.pic;
     if(name && data){
-        await db.sequelize({name: name, img: data}).into('img');
+        await db.sequelize.sync({name: name, img: data}).into('img');
         res.sendStatus(200);
     }else {
         res.sendStatus(400);

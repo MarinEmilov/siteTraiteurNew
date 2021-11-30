@@ -20,14 +20,75 @@ html(lang="en")
 
 <div class="container-fluid text-center bg-danger">
     <h1>Bonjour Chef</h1>
+    <form action="/index"  method="GET">
+    <button >page d'accueil</button>
+    </form>
 </div>
 
-<div class="forme-input text-center">
-<form action="http://localhost:3015/upload" enctype="multipart/form-data" method="POST">
-    <input type="file" name="pic" />
-    <input type="submit" value="Sauvgarder"/>
-</form>
-</div>    
+
+
+<div class="container">
+  <h2>Titre plat</h2>
+  <form action="http://localhost:3015/upload" enctype="multipart/form-data" method="POST">
+  <input type="text" name="titre de plat" placeholder="titre de plat" required/>
+  <br/>
+  <br/>
+  <h3>Prix plat</h3>
+  <input type="text" name="prix de plat" placeholder="prix de plat en $" accept="nombre" required/>
+  
+  <br/>
+    <div class="form-group">
+      <label for="comment">Description de plat:</label>
+      <textarea class="form-control" rows="5" id="comment" name="text" required></textarea>
+      <br/>
+      <div>
+  <input type="radio" id="pas vg" name="option" value="pas vg"/>
+  <label for="huey">Pas Vg</label>
+
+
+    <div>
+    <input type="radio" id="vg" name="option" value="vg">
+    <label for="option vg">Option Vg</label>
+    </div>
+
+    <div>
+    <input type="radio" id="dispo" name="disponible" value="disponible">
+    <label for="dispo">Disponible</label>
+    </div>
+
+    <div>
+    <input type="radio" id="pas dispo" name="disponible" value="pas disponible">
+    <label for="dispo">Non Disponible</label>
+    </div>
+    
+    <input type="file" name="pic" accept="image/*"/>
+    
+    </div>
+    <br/>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+
+
+
+
+
+//- <div class="forme-input ">
+//- <form action="http://localhost:3015/upload" enctype="multipart/form-data" method="POST">
+//- <h3>titre nouveau plat</h3>
+//-     <input type="text" name="titre de plat" placeholder="titre de plat"/>
+//-     <br/>
+//-     <h3>description nouveau plat</h3>
+//-     <input type="text-aria" name="description de plat" placeholder="description de plat"/>
+//-     <br/>
+//-     <h3>prix nouveau plat</h3>
+//-     <input type="text" name="prix de plat" placeholder="prix de plat"/>
+//-     <br/>
+//-     <input type="file" value="choisir un photo" name="pic" accept="image/*"/>
+//-     <input type="submit" value="Sauvgarder"/>
+//- </form>
+//- </div>    
 
 
 

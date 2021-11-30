@@ -3,7 +3,7 @@ let router = express.Router();
 let pageBase = require('../controller/pageBase.js');
 
 router.get('/', pageBase.getHomepage);
-// router.get('/index', pageBase.getLoginPage);
+router.get('/index', pageBase.getHomepage);
 router.get('/vg', pageBase.getVgPage);
 router.get('/sansgluten', pageBase.getSansGlutenPage);
 router.get('/familiale', pageBase.getFamilialePage);
