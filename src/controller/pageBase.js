@@ -1,58 +1,86 @@
+const db = require("../model/db.js");
+const Panier = require("../model/Panier.js");
+const Plat = require("../model/Plat.js");
 
-const db = require('../model/db.js');
-const Plat = require('../model/Plat.js');
+exports.getHomepage = (req, res, next) => {
+  res.render("index", {});
+};
+
+exports.getLoginPage = (req, res, next) => {
+  res.render("index", {});
+};
+
+exports.getMenuDeJourPage = async (req, res, next) => {
+  let datas = await Plat.findAll();
+  res.render("menudejour", { Plat: datas });
+};
+
+exports.getAdminPage = (req, res, next) => {
+  res.render("admin", {});
+};
+
+exports.getEmploiPage = (req, res, next) => {
+  res.render("emploi", {});
+};
+
+exports.getHistoirePage = (req, res, next) => {
+  res.render("histoire", {});
+};
+
+exports.getLocationPage = (req, res, next) => {
+  res.render("location", {});
+};
+
+exports.getPanierPage = async (req, res, next) => {
+    let datas = await Panier.findAll()
+    let datasPlat = await Plat.findByPk()
+  res.render("panier", {Panier: datas, Plat: datasPlat});
+};;
 
 
+exports.postAdminPage = async (req, res, next) => {
+  let namePlat = req.body.titre;
+  let prix = req.body.prix;
+  let description = req.body.texte;
+  let optionVG = req.body.option;
+  let data = req.files.pic;
+
+  Plat.create({
+    TitrePlat: namePlat,
+    PrixPlat: prix,
+    DescriptionPlat: description,
+    OptionPlat: optionVG,
+    ImagePlat: data,
+  });
+
+  res.render("admin", { message: "bien sauvgarder merci" });
+};
 
 
-exports.getHomepage = async( req,res,next) => {
-    let datas = await Plat.findAll();
-    res.render("index", {Plat:datas});
-}
+exports.postPanierPage = async (req, res, next) => {    
+        let idPlat = req.body.itemId;
+        let prix = req.body.itemPrix;
 
-exports.getLoginPage = ( req, res , next) => {   
-    res.render("index", {});
-}
-
-exports.getVgPage = ( req, res , next) => {
-    res.render("vg", {});
-}
-
-exports.getSansGlutenPage = ( req, res , next) => {
-    res.render("sansgluten", {});
-}
-
-exports.getFamilialePage = ( req, res , next) => {
+    Panier.create({
+            IdPlat: idPlat,
+            PrixPlat: prix,
+            
+        });
+        res.render("panier", {});
     
-    res.render("familiale", {});
-}
+ };
 
-exports.getDejeunerPage = ( req, res , next) => {
-    res.render("dejeuner", {});
-}
 
-exports.getAdminPage = ( req, res , next) => {
-    res.render("admin", {});
-}
 
-exports.getEmploiPage = ( req, res , next) => {
-    res.render("emploi", {});
-}
 
-exports.getHistoirePage = ( req, res , next) => {
-    res.render("histoire", {});
-}
 
-exports.getLocationPage = ( req, res , next) => {
-    res.render("location", {});
-}
-
-exports.postAdminPage = async ( req, res , next) => { 
-    const {name, date} = req.files.pic;   
-    await db.sequelize.create({nameImage: name, image: date }).into('imgs');
-        res.sendStatus(200);
-}
-    
+// exports.postPanierPage = async (req, res, next) => {
+//    Plat.findByPk(req.body.itemId, plat =>{
+//        Panier.create(req.body.itemId, plat.PrixPlat, () => {
+//            res.redirect('/panier')
+//        })
+//    });
+// };
 
 
 
@@ -63,7 +91,34 @@ exports.postAdminPage = async ( req, res , next) => {
 
 
 
-// 1 er vercion 
+// exports.postPanierPage = async (req, res, next) => {
+//   Plat.findByPk(req.body.itemId, (plat) => {
+
+//     Panier.add(req.body.itemId, PrixPlat, () => {
+//       res.render("/panier",{});
+//     });
+//   });
+// };
+
+// exports.postPanierPage = async (req, res, next) => {
+//   let idPlat = req.body.itemId;
+
+//   Panier.create({
+//     IdPlat: idPlat,
+
+//   });
+//   res.render("panier", {});
+// };
+
+// let panier = { items: [], totalPrix: 0 };
+// let item = {id: id, qty: 0};
+
+// panier.items.push(item);
+// panier.totalPrix = panier.totalPrix + PrixPlat;
+
+// res.render("panier", {});
+
+// 1 er vercion
 
 // exports.postAdminPage = async ( req, res , next) => {
 //     const {name, date} = req.files.pic;
@@ -73,18 +128,10 @@ exports.postAdminPage = async ( req, res , next) => {
 //     }else {
 //         res.sendStatus(400);
 //     }
-    
+
 // }
 
-
-
-
-// 2em version 
-
-
-
-
-
+// 2em version
 
 // exports.postAdminPage = async ( req, res , next) => {
 //     File.create({
@@ -93,7 +140,7 @@ exports.postAdminPage = async ( req, res , next) => {
 //         data: req.file.pic
 //     }).then(file =>{
 //         console.log(file);
-    
+
 //     const result = {
 //         status: "ok",
 //         filename: req.file.originalname,
@@ -112,7 +159,3 @@ exports.postAdminPage = async ( req, res , next) => {
 //     res.json(result);
 // });
 // }
-
-
-
-

@@ -3,7 +3,9 @@ let session = require("express-session");
 let route = require("./src/routes/pageBase.js");
 let db = require("./src/model/db.js");
 const Plat = require("./src/model/Plat.js");
-const Image = require("./src/model/Image.js");
+const Panier = require("./src/model/Panier.js")
+// const toBuffer = require('blob-to-buffer')
+// const Image = require("./src/model/Image.js");
 const { request } = require("express");
 const fileUpload = require("express-fileupload");
 const app = express();
@@ -30,14 +32,17 @@ app.use(
 app.use(route);
 
 
-(async () => {
-  await db.sequelize.sync({ force: true });
-  Plat.create({namePlat:"Risoto", description :"notre risoto aux fruit de mer", prix: 15, optionVG: 1,});
-  Plat.create({namePlat:"Salade", description :"notre risoto aux fruit de mer", prix: 20, optionVG: 0,});
-  Plat.create({namePlat:"Tomates", description :"notre risoto aux fruit de mer", prix: 25, optionVG: 1, });
-  Plat.create({namePlat:"Saumon", description :"notre risoto aux fruit de mer", prix: 30, optionVG: 0, });
-})();
+// (async () => {
+//   await db.sequelize.sync({ force: true });
+//   Plat.create({TitrePlat:"Risoto", DescriptionPlat :"notre risoto aux fruit de mer", PrixPlat: 15, OptionPlat: 1, ImagePlat:''});
+//   Panier.create({IdPlat:"1",  PrixPlat: 15, });
+// })();
 
+// (async () => {
+//   await db.sequelize.sync({ force: true });
+  
+
+// })();
 
 
 // Server Start

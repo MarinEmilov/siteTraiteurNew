@@ -2,29 +2,32 @@
 let db = require('./db.js');
 
 
-const Plat = db.sequelize.define("plat", {
+
+const Plat = db.sequelize.define("plats", {
      type: db.Sequelize.STRING,
 
-     namePlat: {
+     TitrePlat: {
       type: db.Sequelize.STRING,
       notEmpty: false
   },
     
-    description: {
+  DescriptionPlat: {
       type: db.Sequelize.STRING
     },
 
-    prix: {
+    PrixPlat: {
       type: db.Sequelize.INTEGER
     },
 
-    optionVG: {
+    ImagePlat: {
+      type: db.Sequelize.BLOB                   
+    },
+
+    OptionPlat: {
       type: db.Sequelize.BOOLEAN                     
     },
     
-    image: {
-      type: db.Sequelize.STRING.BINARY                     
-    },
+    
   });
 
 

@@ -1,0 +1,22 @@
+include header.pug
+h1.dysplay-4 Voici les produits dans votre panier
+
+
+block content     
+        
+    .row
+        each item in Panier 
+            .col-sm-12.col-md-12
+                .card 
+                    img(src=item.ImagePlat, alt=item.TitrePlat).card-img-top
+                    .card-body
+                        h2.card-header= item.id
+                        h3.card-title= item.TitrePlat
+                        p.card-discription= item.DescriptionPlat
+                        h5 
+                            | Prix: 
+                            span.badge.badge-pill.bage-dark #{item.PrixPlat} $
+                        hr
+ 
+                        
+                        
