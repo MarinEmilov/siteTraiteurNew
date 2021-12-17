@@ -16,45 +16,50 @@ html(lang="en")
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <link rel='stylesheet', href='style.css')>
-        <title> Marin Emilov Traiteur</title>
+        title= "Marin Emilov Traiteur"
         
-<div class="jumbotron text-center " id="name">Marin Emilov Traiteur
-<span id="admin"><a href="/admin">admin -></a> </span>
-</div>
-<div class="container-fluid text-center  ">
-<span  class="header-phone text-left ">
-      <span >Contactez-nous:</span>
-      <span><a href="tel:+15145555555" >514 555 5555</a></span><br/>
-      <span >E-mail:</span>
-      <span><a href="email: marin_emilov@yahoo.ca" >marin_emilov@traiteur.ca</a></span>
-      <a href="/panier"><span id="loupe"><i class="fas fa-cart-arrow-down"> Votre Panier <span > 
-      span=  message
-      </span></i></span></a>
-      
-</span>
-    
-</div>
-  <div class="container-fluid text-center bg-success ">
-    <ul class="container">
-    <li><a href="/index">Accueill</a></li>
-    <li class="dropdown menu-item menu-a-propos"><a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">Nos Menu <b class="caret"></b></a>
-    <ul class="dropdown-menu">
-      //- <li class=""><a href="/vg">Végtarien</a></li>
-      <li class=""><a href="/menudejour">Menu de Jour</a></li>
-      //- <li class=""><a href="/familiale">Familiales</a></li>
-      //- <li class=""><a href="dejeuner">Déjeuners</a></li>
-      //- <li class=""><a href="individuelle">Individuelles</a></li>
-    </ul>
-    </li>
-      
-      <li><a href="/emploi">Emplois</a></li>
-      <li><a href="/histoire">Histoire</a></li>
-      <li><a href="location">Location</a></li>
-      
-    </ul>
-  </div>
-    li= erreur
-</div>
+.jumbotron.text-center#name
+  | Marin Emilov Traiteur
+
+  span#admin
+    a(href='/admin') admin ->
+    |  
+.container-fluid.text-center
+  span.header-phone.text-left
+    span Contactez-nous : 
+    span
+      a(href='tel:+15145555555') 514 555 5555
+    br
+    span E-mail:
+    span
+      a(href='email: marin_emilov@yahoo.ca') marin_emilov@traiteur.ca
+    a(href='/panier')
+      span#cart
+        i.fas.fa-cart-arrow-down
+          | Votre Panier 
+          span.
+            
+          span= message
+            
+.container-fluid.text-center.bg-success
+  ul.container
+    li
+      a.nav-item.nav-link(href='/index', class=(path === '/index' ? 'active' : '')) Accueill
+    li.dropdown.menu-item.menu-a-propos
+      a.nav-item.nav-link.dropdown-toggle(data-toggle='dropdown' data-target='#' href='#')
+        | Nos Menu 
+        b.caret
+      ul.dropdown-menu
+        li
+          a.nav-item.nav-link(href='/menudejour', class=(path === '/menudejour' ? 'active' : '')) Menu de Jour
+    li
+      a.nav-item.nav-link(href='/emploi', class=(path === '/emploi' ? 'active' : '')) Emplois
+    li
+      a.nav-item.nav-link(href='/histoire', class=(path === '/histoire' ? 'active' : '')) Histoire
+    li
+      a.nav-item.nav-link(href='location', class=(path === '/location' ? 'active' : '')) Location
+| 
+li= erreur
        
            
          

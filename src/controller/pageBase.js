@@ -4,77 +4,78 @@ const Plat = require("../model/Plat.js");
 const multer = require("multer");
 const path = require("path");
 const { createBrotliCompress } = require("zlib");
-const myCompteur = require("../middleware/compteur.js");
+// const myCompteur = require("../middleware/compteur.js");
 const { count } = require("console");
 
-
 // function myCounteur() {
-//   let datas = Panier.findAll();
+
+//   let datas = db.Sequelize.Panier.findAll();
 //   let count = 0;
+//   Panier.datas
 //   for (let i = 0; i < datas.length; i++) {
 //     if (datas[i]) count++;
+
 //   }
+
+//   return console.log(datas);
 // }
 
-exports.getHomepage = (req, res, next) => { 
-  let datas = Panier.findAll();
-  let count = 0;
-  for (let i = 0; i < datas.length; i++) {
-    if (datas[i]) count++;
-  } 
-  res.render("index", { message: count});
-};
-
-exports.getLoginPage = (req, res, next) => { 
-  let datas = Panier.findAll();
+exports.getHomepage = async (req, res, next) => {
+  let datas = await Panier.findAll();
   let count = 0;
   for (let i = 0; i < datas.length; i++) {
     if (datas[i]) count++;
   }
-  res.render("index", { message: count});
+
+  res.render("index", { message: count });
 };
 
-exports.getMenuDeJourPage = async (req, res, next) => { 
+exports.getMenuDeJourPage = async (req, res, next) => {
   let datas = await Plat.findAll();
-  
+  let data = await Panier.findAll();
+  let count = 0;
+  for (let i = 0; i < data.length; i++) {
+    if (data[i]) count++;
+  }
+
   if (datas == 0) {
     res.render("index", {
       erreur: "IL FAUT QUE ADMIN RENTRE LE PLAT POUR AUJOURD'HUI :)",
     });
   }
-  res.render("menudejour", { Plat: datas });
+  res.render("menudejour", { Plat: datas, message: count });
 };
 
 exports.getAdminPage = (req, res, next) => {
   res.render("admin", {});
 };
 
-exports.getEmploiPage = (req, res, next) => {
-  let datas = Panier.findAll();
+exports.getEmploiPage = async (req, res, next) => {
+  let datas = await Panier.findAll();
   let count = 0;
   for (let i = 0; i < datas.length; i++) {
     if (datas[i]) count++;
   }
 
-  res.render("emploi", { message: count});
+  res.render("emploi", { message: count });
 };
 
-exports.getHistoirePage = (req, res, next) => {
-  let datas = Panier.findAll();
+exports.getHistoirePage = async (req, res, next) => {
+  let datas = await Panier.findAll();
   let count = 0;
   for (let i = 0; i < datas.length; i++) {
     if (datas[i]) count++;
   }
-  res.render("histoire", { message: count});
+  res.render("histoire", { message: count });
 };
 
-exports.getLocationPage = (req, res, next) => {
-  let datas = Panier.findAll();
+exports.getLocationPage = async (req, res, next) => {
+  let datas = await Panier.findAll();
   let count = 0;
   for (let i = 0; i < datas.length; i++) {
     if (datas[i]) count++;
   }
-  res.render("location", { message: count});
+  res.render("location", { message: count });
 };
 
 exports.getPanierPage = async (req, res, next) => {
@@ -82,13 +83,13 @@ exports.getPanierPage = async (req, res, next) => {
   let count = 0;
   for (let i = 0; i < datas.length; i++) {
     if (datas[i]) count++;
-  } 
+    console.log(count);
+  }
   /* let datasPlat = await Plat.findByPk() */
   res.render("panier", { Panier: datas, message: count /* Plat: datasPlat */ });
 };
 
 exports.postAdminPage = async (req, res, next) => {
-
   let namePlat = req.body.titre;
   let prix = req.body.prix;
   let description = req.body.texte;
@@ -110,6 +111,12 @@ exports.postAdminPage = async (req, res, next) => {
 
 exports.postPanierPage = async (req, res, next) => {
   let datas = await Panier.findAll();
+  let count = 0;
+  for (let i = 0; i < datas.length; i++) {
+    if (datas[i]) count++;
+    console.log(count);
+  }
+
   let idPlat = req.body.itemId;
   let prix = req.body.itemPrix;
 
@@ -117,9 +124,12 @@ exports.postPanierPage = async (req, res, next) => {
     IdPlat: idPlat,
     PrixPlat: prix,
   });
-  res.render("panier", { Panier: datas, panier: "bien sauvgarder merci" });
+  res.render("panier", {
+    Panier: datas,
+    panier: "bien sauvgarder merci",
+    message: count,
+  });
 };
-
 
 // const storage = multer.diskStorage({
 //   destination: (req, file, next) => {
@@ -146,14 +156,6 @@ exports.postPanierPage = async (req, res, next) => {
 
 //   }
 // }).single("image")
-
-
-
-
-
-
-
-
 
 // exports.postPanierPage = async (req, res, next) => {
 //    Plat.findByPk(req.body.itemId, plat =>{

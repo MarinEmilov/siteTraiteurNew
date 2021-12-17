@@ -32,12 +32,12 @@ app.use(
 
 app.use(route);
 
-db.sequelize.sync({ force: true }).then(result => {
-  console.log(result);
-  app.listen(3000);
-}).catch(err => {
-  console.log(err);
-});
+// db.sequelize.sync({ force: true }).then(result => {
+//   console.log(result);
+//   app.listen(3000);
+// }).catch(err => {
+//   console.log(err);
+// });
 
 
 

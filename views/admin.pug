@@ -18,53 +18,36 @@ html(lang="en")
         <link rel='stylesheet', href='style.css')>
         <title> Marin Emilov Traiteur</title>
 
-<div class="container-fluid text-center bg-danger">
-    <h1>Bonjour Chef</h1>
-    <a href="/index"  class="btn ">
-    <button >page d'accueil</button>
-    </a>
-</div>
+.container-fluid.text-center.bg-danger
+  h1 Bonjour Chef Bienvenue sur section administrateur 
+  a.btn(href='/index')
+    button page d'accueil
 
-<div class="container">
- 
-  <form action="http://localhost:3015/upload" enctype="multipart/form-data" method="POST">
-   <label>Titre plat</label>
-    <input type="text" name="titre" placeholder="titre de plat" />
-  <br/>  
-  <label>Prix plat</label>
-    <input type="text" name="prix" placeholder="prix de plat en $" />  
-  <br/>
-    <div class="form-group">
-      <label for="description">Description de plat:</label>
-      <textarea class="form-control" rows="5" id="comment" name="texte" required></textarea>
-      <br/>
-    <div>
 
-    <div>
-    <input type="radio" id="vg" name="option" value="vg">
-    <label for="option vg">Option Vg</label>
-    </div> 
-
-    <div>
-    <input type="checkbox" id="active" name="active" value="active">
-    <label for="active">active</label>
-    </div>
-    
-    <input type="file" name="pic" accept="image/*"/>
-    
-    </div>
-    <br/>
-    <button type="submit" class="btn btn-primary">Submit</button>
+.card 
+  .card-body   
+    form(action='/admin/ajouter-un-plat' enctype='multipart/form-data' method='POST')
+      .form-group 
+        label(for="name") Titre plat
+        input(type='text' name='titre' id=" titre" placeholder='titre de plat').form-control
+        br
+        label(for="prix") Prix plat
+        input(type='text' name='prix' placeholder='prix de plat en $').form-control
+        br
+        .form-group
+          label(for='description') Description de plat:
+          textarea.form-control#comment(rows='5' name='texte' required)
+          br
+          div
+            div
+              input#vg(type='radio' name='option' value='vg')
+              label(for='option vg') Option Vg
+            div
+              input#active(type='checkbox' name='active' value='active')
+              label(for='active') active
+            input(type='file' name='pic' accept='image/*')
+          br
+          button.btn.btn-primary(type='submit') Submit
+          | 
     .jumbotron= message
-  </form>
-</div>
-
-
-
-
-
-
- 
-
-
 

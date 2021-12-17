@@ -9,7 +9,7 @@ router.get("/admin", pageBase.getAdminPage);
 router.get("/emploi", pageBase.getEmploiPage);
 router.get("/histoire", pageBase.getHistoirePage);
 router.get("/location", pageBase.getLocationPage);
-router.post("/upload", pageBase.postAdminPage);
+router.post("/admin/ajouter-un-plat", pageBase.postAdminPage);
 router.get("/panier", pageBase.getPanierPage);
 router.post("/ajouter-dans-panier", pageBase.postPanierPage);
 

@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "html2pug": "html2pug < html2pug.html >html2pug.pug -f"
   },
   "author": "",
   "license": "ISC",
@@ -22,5 +23,8 @@
     "pug": "^3.0.2",
     "sequelize": "^6.7.0",
     "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "html2pug": "^4.0.0"
   }
 }

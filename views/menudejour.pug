@@ -3,23 +3,24 @@ include header.pug
 block content
     .jumbotron  
         h1.dysplay-4 Bonjour 
-        p.lead Voici les produits disponible pour aujourd'hui 
-    .row
-        each item in Plat 
-            .col-sm-6.col-md-3
-                .card 
-                    img(src=item.ImagePlat, alt=item.TitrePlat).card-img-top
-                    .card-body
-                        h3.card-title= item.TitrePlat
-                        p.card-discription= item.DescriptionPlat
-                        h5 
-                            | Prix: 
-                            span.badge.badge-pill.bage-dark #{item.PrixPlat} $
-                        hr
-                        form(action="http://localhost:3015/ajouter-dans-panier" method="POST")
-                            input(type="hidden", name="itemId", value=item.id) 
-                            input(type="hidden", name="itemPrix" value=item.PrixPlat)                           
-                            button(type="submit").btn.btn-outline-dark.btn-sm ajouter dans panier  
+        p.lead Voici les produits disponible pour aujourd'hui
+        .conteneur 
+        .row
+            each item in Plat  
+                .col-sm-6.col-md-3
+                    .card 
+                        img(src=data image/png;base64,base64_encode($item.ImagePlat), alt=item.TitrePlat).card-img-top
+                        .card-body
+                            h3.card-title= item.TitrePlat
+                            p.card-discription= item.DescriptionPlat
+                            h5 
+                                | Prix: 
+                                span.badge.badge-pill.bage-dark #{item.PrixPlat} $
+                            hr
+                            form(action="http://localhost:3015/ajouter-dans-panier" method="POST")
+                                input(type="hidden", name="itemId", value=item.id) 
+                                input(type="hidden", name="itemPrix" value=item.PrixPlat)                           
+                                button(type="submit").btn.btn-outline-dark.btn-sm ajouter dans panier  
 
                         
             
