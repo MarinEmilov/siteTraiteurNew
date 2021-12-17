@@ -16,16 +16,25 @@ const Plat = db.sequelize.define("plats", {
     },
 
     PrixPlat: {
-      type: db.Sequelize.INTEGER
+      type: db.Sequelize.INTEGER,
+      allowNull: false
     },
 
     ImagePlat: {
-      type: db.Sequelize.BLOB                   
+      type: db.Sequelize.BLOB('long'),
+                     
     },
 
     OptionPlat: {
-      type: db.Sequelize.BOOLEAN                     
+      type: db.Sequelize.BOOLEAN,
+      notEmpty: false                    
     },
+
+    PlatVisible: {
+      type: db.Sequelize.BOOLEAN,
+     
+      
+    }
     
     
   });

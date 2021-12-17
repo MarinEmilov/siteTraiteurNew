@@ -16,11 +16,11 @@ block content
                             | Prix: 
                             span.badge.badge-pill.bage-dark #{item.PrixPlat} $
                         hr
-                        form(action="/panier" method="POST")
+                        form(action="http://localhost:3015/ajouter-dans-panier" method="POST")
                             input(type="hidden", name="itemId", value=item.id) 
                             input(type="hidden", name="itemPrix" value=item.PrixPlat)                           
                             button(type="submit").btn.btn-outline-dark.btn-sm ajouter dans panier  
-                      
+
                         
             
 

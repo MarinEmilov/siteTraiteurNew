@@ -6,6 +6,8 @@ const sequelize = new Sequelize('traiteur', 'root', '', {
     dialect: 'mariadb'
 });
 
+
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 

@@ -2,8 +2,9 @@ const express = require("express");
 let session = require("express-session");
 let route = require("./src/routes/pageBase.js");
 let db = require("./src/model/db.js");
-const Plat = require("./src/model/Plat.js");
-const Panier = require("./src/model/Panier.js")
+
+// const Plat = require("./src/model/Plat.js");
+// const Panier = require("./src/model/Panier.js")
 // const toBuffer = require('blob-to-buffer')
 // const Image = require("./src/model/Image.js");
 const { request } = require("express");
@@ -30,6 +31,17 @@ app.use(
 );
 
 app.use(route);
+
+db.sequelize.sync({ force: true }).then(result => {
+  console.log(result);
+  app.listen(3000);
+}).catch(err => {
+  console.log(err);
+});
+
+
+
+
 
 
 // (async () => {
