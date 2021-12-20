@@ -21,29 +21,26 @@ const { count } = require("console");
 // }
 
 exports.getHomepage = async (req, res, next) => {
-  let datas = await Panier.findAll();
-  let count = 0;
-  for (let i = 0; i < datas.length; i++) {
-    if (datas[i]) count++;
-  }
-
-  res.render("index", { message: count });
+  
+  res.render("index", { message: res.Paniercount });
 };
 
 exports.getMenuDeJourPage = async (req, res, next) => {
-  let datas = await Plat.findAll();
-  let data = await Panier.findAll();
-  let count = 0;
-  for (let i = 0; i < data.length; i++) {
-    if (data[i]) count++;
-  }
+  //  let datas = await Plat.findAll();
+  // let data = await Panier.findAll();
+  // let count = 0;
+  // for (let i = 0; i < data.length; i++) {
+  //   if (data[i]) count++;
+  // }
+  // console.log(res.Panier)
+  // console.log(res.Paniercount)
 
-  if (datas == 0) {
+  if (res.Plat == 0) {
     res.render("index", {
       erreur: "IL FAUT QUE ADMIN RENTRE LE PLAT POUR AUJOURD'HUI :)",
     });
   }
-  res.render("menudejour", { Plat: datas, message: count });
+  res.render("menudejour", { Plat: res.Plat, message: res.Paniercount});
 };
 
 exports.getAdminPage = (req, res, next) => {
@@ -79,14 +76,9 @@ exports.getLocationPage = async (req, res, next) => {
 };
 
 exports.getPanierPage = async (req, res, next) => {
-  let datas = await Panier.findAll();
-  let count = 0;
-  for (let i = 0; i < datas.length; i++) {
-    if (datas[i]) count++;
-    console.log(count);
-  }
-  /* let datasPlat = await Plat.findByPk() */
-  res.render("panier", { Panier: datas, message: count /* Plat: datasPlat */ });
+ res.Panier
+ res.Plat
+  res.render("panier", { Panier: res.Panier, message: res.Paniercount});
 };
 
 exports.postAdminPage = async (req, res, next) => {
@@ -114,7 +106,7 @@ exports.postPanierPage = async (req, res, next) => {
   let count = 0;
   for (let i = 0; i < datas.length; i++) {
     if (datas[i]) count++;
-    console.log(count);
+    // console.log(count);
   }
 
   let idPlat = req.body.itemId;

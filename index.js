@@ -3,12 +3,13 @@ let session = require("express-session");
 let route = require("./src/routes/pageBase.js");
 let db = require("./src/model/db.js");
 
-// const Plat = require("./src/model/Plat.js");
-// const Panier = require("./src/model/Panier.js")
+ const Plat = require("./src/model/Plat.js");
+ const Panier = require("./src/model/Panier.js")
 // const toBuffer = require('blob-to-buffer')
 // const Image = require("./src/model/Image.js");
 const { request } = require("express");
 const fileUpload = require("express-fileupload");
+const makeMiddleware = require("multer/lib/make-middleware");
 const app = express();
 const port = 3015;
 
@@ -20,7 +21,19 @@ app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(fileUpload());
+app.use(async(req,res,next) => {
+  let datas = await Plat.findAll();
+  let data = await Panier.findAll();
+  res.Plat=datas
+  res.Panier=data
+  let count = 0;
+  for (let i = 0; i < data.length; i++) {
+    if (data[i]) count++;
+  }
+  res.Paniercount=count
+  next()
 
+})
 // Session avec notre cle
 app.use(
   session({

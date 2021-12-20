@@ -30,7 +30,7 @@ function RaipasFabrique()
 
 function say()
 {
-    console.log(this.name, this.prix, this.type)
+    // console.log(this.name, this.prix, this.type)
 }
 
 const raipasFabrique = new RaipasFabrique()  

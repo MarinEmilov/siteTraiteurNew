@@ -1,14 +1,14 @@
-// const Panier = require("./src/model/Panier.js")
+  const Panier = require("../model/Panier.js")
 
 
- let myCompteur = function  myCounteur(k) {
+ function  myCounteur(k) {
   k=6;
   let datas = Panier.findAll();
   let count = 0;
   k=0;
   for (let i = 0; i < datas.length; i++) {
     if (datas[i]) count++;k++
-    console.log(count)
+    // console.log(count)
   }
  
   return k;
