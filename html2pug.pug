@@ -1,7 +1,12 @@
-div
-  .jumbotron.text-center#pageacceuil
-    video.container(autoplay muted playsinline loop ;)
-      source(src='/images/video.mp4' ; type='video/mp4')
-    div.
-      
-      
+form
+  .form-group
+    label(for='exampleInputEmail1') Email address
+    input.form-control#exampleInputEmail1(type='email' aria-describedby='emailHelp' placeholder='Enter email')
+    small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
+  .form-group
+    label(for='exampleInputPassword1') Password
+    input.form-control#exampleInputPassword1(type='password' placeholder='Password')
+  .form-group.form-check
+    input.form-check-input#exampleCheck1(type='checkbox')
+    label.form-check-label(for='exampleCheck1') Check me out
+  button.btn.btn-primary(type='submit') Submit

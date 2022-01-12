@@ -1,0 +1,14 @@
+h1 Register
+form(action="/register" method="POST") 
+    .conteneur 
+        label(for="name") Name :
+        input(type="text" id="name" name="name" required) 
+    .conteneur 
+        label(for="email") Email :
+        input(type="email" id="email" name="email" required)
+    .conteneur 
+        label(for="password") Password :
+        input(type="password" id="password" name="password" required)
+        hr
+    input(type="submit" value="Register")
+a(href="/login") Login 

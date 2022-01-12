@@ -1,0 +1,13 @@
+h1 Login 
+//- #{if(messages.error) {=messages.error}
+form(action="/login" method="POST") 
+
+    .conteneur 
+        label(for="email") Email :
+        input(type="email" id="email" name="email")
+    .conteneur 
+        label(for="password") Password :
+        input(type="password" id="password" name="password" required)
+        hr
+    input(type="submit" value="Login")
+a(href="/register") Register 

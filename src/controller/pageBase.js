@@ -1,46 +1,64 @@
+
+
 const db = require("../model/db.js");
 const Panier = require("../model/Panier.js");
 const Plat = require("../model/Plat.js");
-const multer = require("multer");
-const path = require("path");
-const { createBrotliCompress } = require("zlib");
-// const myCompteur = require("../middleware/compteur.js");
-const { count } = require("console");
+const bcrypt = require("bcrypt");
+const passport = require("passport");
+const initializePassport = require("../middleware/Passport.js");
 
-// function myCounteur() {
 
-//   let datas = db.Sequelize.Panier.findAll();
-//   let count = 0;
-//   Panier.datas
-//   for (let i = 0; i < datas.length; i++) {
-//     if (datas[i]) count++;
+initializePassport(
+  passport, 
+  email => users.find(user => user.email === email)
+);
 
-//   }
-
-//   return console.log(datas);
-// }
+users = [];
 
 exports.getHomepage = async (req, res, next) => {
-  
-  res.render("index", { message: res.Paniercount });
+  res.render("index", {});
+};
+
+exports.getLoginpage = async (req, res, next) => {
+  res.render("login", {});
+};
+
+exports.getRegisterpage = async (req, res, next) => {
+  res.render("register", {});
+};
+
+exports.postLoginpage = async (req, res, next) =>{
+  res.render("/login", passport.authenticate('local', {
+    successRedirect: "/",
+    failureRedirect: "/login",
+    failureFlash: true,
+}))
+};
+
+
+
+exports.postRegisterpage = async (req, res, next) => {
+  try {
+    const hashdPassword = await bcrypt.hash(req.body.password, 10);
+    users.push({
+      id: Date.now().toString(),
+      name: req.body.name,
+      email: req.body.email,
+      password: hashdPassword,
+    });
+    res.redirect("/login");
+  } catch {
+    res.redirect("/register");
+  }
 };
 
 exports.getMenuDeJourPage = async (req, res, next) => {
-  //  let datas = await Plat.findAll();
-  // let data = await Panier.findAll();
-  // let count = 0;
-  // for (let i = 0; i < data.length; i++) {
-  //   if (data[i]) count++;
-  // }
-  // console.log(res.Panier)
-  // console.log(res.Paniercount)
-
   if (res.Plat == 0) {
     res.render("index", {
       erreur: "IL FAUT QUE ADMIN RENTRE LE PLAT POUR AUJOURD'HUI :)",
     });
   }
-  res.render("menudejour", { Plat: res.Plat, message: res.Paniercount});
+  res.render("menudejour", { Plat: res.Plat, message: res.Paniercount });
 };
 
 exports.getAdminPage = (req, res, next) => {
@@ -48,37 +66,37 @@ exports.getAdminPage = (req, res, next) => {
 };
 
 exports.getEmploiPage = async (req, res, next) => {
-  let datas = await Panier.findAll();
-  let count = 0;
-  for (let i = 0; i < datas.length; i++) {
-    if (datas[i]) count++;
-  }
+  // let datas = await Panier.findAll();
+  // let count = 0;
+  // for (let i = 0; i < datas.length; i++) {
+  //   if (datas[i]) count++;
+  // }
 
-  res.render("emploi", { message: count });
+  res.render("emploi", { message: res.Paniercount });
 };
 
 exports.getHistoirePage = async (req, res, next) => {
-  let datas = await Panier.findAll();
-  let count = 0;
-  for (let i = 0; i < datas.length; i++) {
-    if (datas[i]) count++;
-  }
-  res.render("histoire", { message: count });
+  // let datas = await Panier.findAll();
+  // let count = 0;
+  // for (let i = 0; i < datas.length; i++) {
+  //   if (datas[i]) count++;
+  // }
+  res.render("histoire", { message: res.Paniercount });
 };
 
 exports.getLocationPage = async (req, res, next) => {
-  let datas = await Panier.findAll();
-  let count = 0;
-  for (let i = 0; i < datas.length; i++) {
-    if (datas[i]) count++;
-  }
-  res.render("location", { message: count });
+  // let datas = await Panier.findAll();
+  // let count = 0;
+  // for (let i = 0; i < datas.length; i++) {
+  //   if (datas[i]) count++;
+  // }
+  res.render("location", { message: res.Paniercount });
 };
 
 exports.getPanierPage = async (req, res, next) => {
- res.Panier
- res.Plat
-  res.render("panier", { Panier: res.Panier, message: res.Paniercount});
+  res.Panier;
+  res.Plat;
+  res.render("panier", { Panier: res.Panier, message: res.Paniercount });
 };
 
 exports.postAdminPage = async (req, res, next) => {
@@ -102,12 +120,12 @@ exports.postAdminPage = async (req, res, next) => {
 };
 
 exports.postPanierPage = async (req, res, next) => {
-  let datas = await Panier.findAll();
-  let count = 0;
-  for (let i = 0; i < datas.length; i++) {
-    if (datas[i]) count++;
-    // console.log(count);
-  }
+  // let datas = await Panier.findAll();
+  // let count = 0;
+  // for (let i = 0; i < datas.length; i++) {
+  //   if (datas[i]) count++;
+  //   // console.log(count);
+  // }
 
   let idPlat = req.body.itemId;
   let prix = req.body.itemPrix;
@@ -117,9 +135,9 @@ exports.postPanierPage = async (req, res, next) => {
     PrixPlat: prix,
   });
   res.render("panier", {
-    Panier: datas,
+    Panier: res.Panier,
     panier: "bien sauvgarder merci",
-    message: count,
+    message: res.Paniercount,
   });
 };
 
