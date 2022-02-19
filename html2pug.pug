@@ -1,12 +1,60 @@
 form
+  .form-row
+    .col-md-4.mb-3
+      label(for='validationServer01') First name
+      input.form-control.is-valid#validationServer01(type='text' placeholder='First name' value='Mark' required)
+      .valid-feedback.
+        
+        Looks good!
+        
+    .col-md-4.mb-3
+      label(for='validationServer02') Last name
+      input.form-control.is-valid#validationServer02(type='text' placeholder='Last name' value='Otto' required)
+      .valid-feedback.
+        
+        Looks good!
+        
+    .col-md-4.mb-3
+      label(for='validationServerUsername') Username
+      .input-group
+        .input-group-prepend
+          span.input-group-text#inputGroupPrepend3 @
+        input.form-control.is-invalid#validationServerUsername(type='text' placeholder='Username' aria-describedby='inputGroupPrepend3' required)
+        .invalid-feedback.
+          
+          Please choose a username.
+          
+  .form-row
+    .col-md-6.mb-3
+      label(for='validationServer03') City
+      input.form-control.is-invalid#validationServer03(type='text' placeholder='City' required)
+      .invalid-feedback.
+        
+        Please provide a valid city.
+        
+    .col-md-3.mb-3
+      label(for='validationServer04') State
+      input.form-control.is-invalid#validationServer04(type='text' placeholder='State' required)
+      .invalid-feedback.
+        
+        Please provide a valid state.
+        
+    .col-md-3.mb-3
+      label(for='validationServer05') Zip
+      input.form-control.is-invalid#validationServer05(type='text' placeholder='Zip' required)
+      .invalid-feedback.
+        
+        Please provide a valid zip.
+        
   .form-group
-    label(for='exampleInputEmail1') Email address
-    input.form-control#exampleInputEmail1(type='email' aria-describedby='emailHelp' placeholder='Enter email')
-    small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
-  .form-group
-    label(for='exampleInputPassword1') Password
-    input.form-control#exampleInputPassword1(type='password' placeholder='Password')
-  .form-group.form-check
-    input.form-check-input#exampleCheck1(type='checkbox')
-    label.form-check-label(for='exampleCheck1') Check me out
-  button.btn.btn-primary(type='submit') Submit
+    .form-check
+      input.form-check-input.is-invalid#invalidCheck3(type='checkbox' required)
+      label.form-check-label(for='invalidCheck3').
+        
+        Agree to terms and conditions
+        
+      .invalid-feedback.
+        
+        You must agree before submitting.
+        
+  button.btn.btn-primary(type='submit') Submit form
